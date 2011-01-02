@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>neo4j-spatial.rb</name>
+	<comment></comment>
+	<projects>
+		<project>neo4j-spatial</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.rubypeople.rdt.core.rubybuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.rubypeople.rdt.core.rubynature</nature>
+	</natures>
+</projectDescription>

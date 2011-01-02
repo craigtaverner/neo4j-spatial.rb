@@ -1,0 +1,31 @@
+== Welcome to neo4j-spatial.rb
+
+Neo4j is a graph database for Java, Neo4j.rb is a graph database for JRuby using Neo4j internally. Neo4j-spatial.rb is a wrapper on Neo4j.rb that includes all the Java dependencies to enable spatial analysis, and includes some Ruby wrappers to access the spatial utilities.
+
+For more information on the underlying components refer to:
+* {Neo4J}[http://www.neo4j.org] - for persistence and traversal of the graph
+* {Neo4J.rb}[http://github.com/andreasronge/neo4j] - for Ruby API to Neo4j
+* {Neo4j-Spatial}[http://github.com/neo4j/neo4j-spatial] - for loading, indexing and analysing spatial data
+
+=== Why Neo4j-Spatial.rb ?
+
+When we wrote Neo4j-spatial we found that while it had many capabilities, most users did not know about them. The lack of articles, blogs and examples made the code a little unapproachable. This Ruby wrapper was originally written to support writing blogs about some of the interesting use cases that are possible with Neo4j-Spatial, but the decision to base it on Andreas Ronges excellent Neo4j.rb library also means that it can be used in a much wider context, including Rails application.
+
+=== Documentation
+
+.. to be done ..
+
+=== Some Examples
+
+.. to be done ..
+
+=== Contributing
+
+Have you found a bug, need help or have a patch ?
+Just clone neo4j-spatial.rb and send me a pull request or email me.
+Do you need help - mail the neo4j or neo4j.rb mailing lists.
+
+=== License
+* Neo4j and Neo4j-Spatial - Dual free software/commercial license, see http://neo4j.org/
+* Neo4j.rb - MIT, see the LICENSE file http://github.com/andreasronge/neo4j/tree/master/LICENSE.
+* Lucene -  Apache, see http://lucene.apache.org/java/docs/features.html
