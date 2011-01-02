@@ -1,6 +1,8 @@
 #!/usr/bin/env jruby
 
-$: << '../lib' # useful if being run inside a source code checkout
+# useful if being run inside a source code checkout
+$: << 'lib'
+$: << '../lib'
 
 require 'rubygems'
 require 'neo4j/spatial'

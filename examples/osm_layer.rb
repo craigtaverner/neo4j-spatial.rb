@@ -1,6 +1,8 @@
 #!/usr/bin/env jruby
 
-$: << '../lib' # useful if being run inside a source code checkout
+# useful if being run inside a source code checkout
+$: << 'lib'
+$: << '../lib'
 
 require 'rubygems'
 require 'neo4j/spatial'
@@ -12,6 +14,8 @@ if $list === 'layers'
   layers = Neo4j::Spatial::Layer.list
   puts "Have #{layers.length} existing layers in the database:"
   layers.each {|l| puts "\t#{l} (#{l.type_name})"}
+  puts
+  exit 0
 end
 
 if $help || $args.length < 2

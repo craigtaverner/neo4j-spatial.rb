@@ -9,7 +9,7 @@ $CLASSPATH << '../../neo4j-spatial/target/classes'
 require 'neo4j'
 begin
   require 'amanzi/sld'
-rescue
+rescue LoadError
 end
 
 require 'neo4j/spatial/jars/neo4j-spatial-0.3-SNAPSHOT.jar'

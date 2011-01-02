@@ -1,5 +1,6 @@
 #!/usr/bin/env jruby
 
+$: << 'lib'
 $: << '../lib'
 
 require 'rubygems'

@@ -21,17 +21,21 @@ Two options:
 * As a RubyGem: jruby -S gem install neo4j-spatial
 * From source: git clone git@github.com:craigtaverner/neo4j-spatial.rb.git
 
+Take note that neo4j-spatial.rb requires that you install the neo4j gem for database access, and optionally the amanzi-sld gem (for advanced styling of the PNG exports). If you install neo4j-spatial as a rubygem, you should get these dependencies automatically, otherwise be sure to install them before running the examples below.
+
 === Some Examples
 
 The examples directory includes a few sample Ruby scripts for various import/export tasks, as well as some sample OSM data to test one. Consider the following run through:
 
-git clone git@github.com:craigtaverner/neo4j-spatial.rb.git
-cd neo4j-spatial.rb/examples
-jruby osm_import.rb map2.osm
-jruby osm_layer.rb map2.osm highway highway-residential waterway natural natural-water
-jruby osm_layer.rb -l
-jruby export_layer.rb highway-residential
-jruby export_layer.rb -F shp highway-residential natural
+  git clone git@github.com:craigtaverner/neo4j-spatial.rb.git
+  cd neo4j-spatial.rb/examples
+  jruby osm_import.rb map2.osm
+  jruby osm_layer.rb map2.osm highway highway-residential waterway natural natural-water
+  jruby osm_layer.rb -l
+  jruby export_layer.rb highway-residential
+  jruby export_layer.rb -F shp highway-residential natural
+
+Then take a look in the examples/target/export directory for the PNG and SHP files generated. Run each of the three utility commands with no arguments, or with -h, to see what options are available.
 
 === Contributing
 
