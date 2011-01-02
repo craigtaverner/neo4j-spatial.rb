@@ -25,6 +25,11 @@ Take note that neo4j-spatial.rb requires that you install the neo4j gem for data
 
 === Some Examples
 
+.. to be done ..
+(or see the code in the command-line utilities described below for examples)
+
+=== Command-line utilities
+
 The examples directory includes a few sample Ruby scripts for various import/export tasks, as well as some sample OSM data to test one. Consider the following run through:
 
   git clone git@github.com:craigtaverner/neo4j-spatial.rb.git
@@ -44,6 +49,7 @@ Just clone neo4j-spatial.rb and send me a pull request or email me.
 Do you need help - mail the neo4j or neo4j.rb mailing lists.
 
 === License
+
 * Neo4j and Neo4j-Spatial - Dual free software/commercial license, see http://neo4j.org/
 * Neo4j.rb - MIT, see the LICENSE file http://github.com/andreasronge/neo4j/tree/master/LICENSE.
 * Lucene -  Apache, see http://lucene.apache.org/java/docs/features.html
