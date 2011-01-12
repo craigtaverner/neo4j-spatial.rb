@@ -26,6 +26,6 @@ EOF
   s.extra_rdoc_files = %w( README.rdoc )
   s.rdoc_options = ["--quiet", "--title", "Neo4j-Spatial.rb", "--opname", "index.html", "--line-numbers", "--main", "README.rdoc", "--inline-source"]
   s.required_ruby_version = ">= 1.8.7"
-  s.add_dependency('neo4j',">= 1.0.0")
+  s.add_dependency('neo4j',">= 1.0.0.beta.23")
   s.add_dependency('amanzi-sld',">= 0.0.1")
 end

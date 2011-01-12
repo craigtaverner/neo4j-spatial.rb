@@ -18,6 +18,8 @@ module Neo4j
             end
           elsif arg =~ /\-E/
             $export = ARGV.shift
+          elsif arg =~ /\-M/
+            $limit = Math.max(ARGV.shift.to_i, 10)
           elsif arg =~ /\-F/
             $format = ARGV.shift
           elsif arg =~ /\-L/
