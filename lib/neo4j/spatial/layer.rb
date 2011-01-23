@@ -38,6 +38,15 @@ module Neo4j
       def to_s
         @layer.name
       end
+      def describe
+        %Q{#{@layer.name} (#{type_name}:#{geometry}#{parent ? " from #{parent.name}" : ''})}
+      end
+      def geometry
+        Geometry.id_to_string(@layer.geometry_type)
+      end
+      def parent
+        @parent ||= @layer.respond_to?('parent') ? @layer.parent : nil
+      end
       def type_name
         @layer.class.to_s.downcase.gsub(/.*[\.\:](\w+)layer.*/){|m| $1}
       end

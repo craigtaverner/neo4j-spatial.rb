@@ -11,9 +11,9 @@ module Neo4j
         database(options)
         @exporter = org.neo4j.gis.spatial.geotools.data.StyledImageExporter.new(@db.graph)
         @exporter.setExportDir(options[:dir])
-        @exporter.setZoom(options[:zoom])
-        @exporter.setOffset((options[:offset_x] || options[:offset]).to_f, (options[:offset_y] || options[:offset]).to_f)
-        @exporter.setSize(options[:width], options[:height])
+        @exporter.setZoom(options[:zoom].to_f)
+        @exporter.setOffset((options[:offset_x].to_f || options[:offset]).to_f, (options[:offset_y].to_f || options[:offset]).to_f)
+        @exporter.setSize(options[:width].to_i, options[:height].to_i)
       end
       def default(options)
         options[:dir] ||= "target/export"

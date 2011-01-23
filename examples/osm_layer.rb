@@ -13,16 +13,31 @@ $args = Neo4j::Spatial::Cmd.args
 if $list === 'layers'
   layers = Neo4j::Spatial::Layer.list
   puts "Have #{layers.length} existing layers in the database:"
-  layers.each {|l| puts "\t#{l} (#{l.type_name})"}
+  layers.each {|l| puts "\t#{l.describe}"}
   puts
   exit 0
+end
+
+if $exists
+  if $exists == true
+    $exists = $args.shift
+  end
+  if Neo4j::Spatial::Layer.exist?($exists)
+    puts "Layer '#{$exists}' exists"
+    exit 0
+  else
+    puts "Layer '#{$exists}' not found"
+    exit -1
+  end
 end
 
 if $help || $args.length < 2
   puts <<-eos
 
-usage: ./osm_layer.rb <-D storage_path> <-l> <-h> layer layerspec <layerspecs>
+usage: ./osm_layer.rb <-D storage_path> <-x> <-l> <-r> <-h> layer layerspec <layerspecs>
     -D  Use specified database location
+    -x  Test if specified layer exists (and exit)
+    -r  Delete specified dynamic layer on specified osm layer
     -l  List existing database layers
     -h  Display this help and exit
   The layer should be a pre-existing OSM layer in the database created with OSM import.
@@ -51,5 +66,9 @@ end
 $args.each do |layerspec|
   x = layerspec.split(/[\.-]/) << nil
   x = x[0...(2*(x.length/2))] # allow only even number of entries
-  $layer.add_dynamic_layer Hash[*x]
+  if $delete
+    $layer.remove_dynamic_layer Hash[*x]
+  else
+    $layer.add_dynamic_layer Hash[*x]
+  end
 end

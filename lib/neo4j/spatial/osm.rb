@@ -1,5 +1,6 @@
 require 'neo4j/spatial/listener'
 require 'neo4j/spatial/database'
+require 'neo4j/spatial/geometry'
 
 java_import org.neo4j.gis.spatial.Constants
 java_import org.neo4j.gis.spatial.SpatialDatabaseService
@@ -71,16 +72,31 @@ module Neo4j
           :encoder => OSMGeometryEncoder
         }))
       end
+      def remove_dynamic_layer(options={})
+        add_dynamic_layer(options.merge(:delete => true))
+      end
       def add_dynamic_layer(options={})
-        gtype = (options.delete(:gtype) || Constants.GTYPE_LINESTRING).to_i
+        delete = options.delete(:delete)
+        options[:default] ||= :linestring
+        geometry = Geometry.new(options)
+        options.delete :default
         name ||= options.delete(:layer_name) ||
-          !options.empty? && options.to_a.flatten.compact.join('-') ||
-          SpatialDatabaseService.convertGeometryTypeToName(gtype)
+          !options.empty? && options.to_a.flatten.compact.join('-').gsub(/\-+$/,'') ||
+          geometry.to_s
         if list.grep(name).length > 0
-          puts "We already have a dynamic layer called '#{name}'"
+          if delete
+            puts "Deleting dynamic layer '#{name}'[Geometry:#{geometry}]: #{options.inspect}"
+            layer.remove_dynamic_layer(name.to_s)
+          else
+            puts "We already have a dynamic layer called '#{name}'"
+          end
         else
-          puts "Creating new dynamic layer '#{name}'[GType:#{TYPES[gtype]}]: #{options.inspect}"
-          layer.add_dynamic_layer_on_way_tags(name.to_s, gtype, java.util.HashMap.new(options))
+          if delete
+            puts "No such dynamic layer found for OSM-layer '#{self}': #{name}"
+          else
+            puts "Creating new dynamic layer '#{name}'[Geometry:#{geometry}]: #{options.inspect}"
+            layer.add_dynamic_layer_on_way_tags(name.to_s, geometry.gtype, java.util.HashMap.new(options))
+          end
         end
       end
       # List dynamic layers associated with this layer
