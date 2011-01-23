@@ -21,7 +21,7 @@ access Neo4j-Spatial features from the convenience of the Ruby scripting languag
 EOF
 
   s.require_path = 'lib'
-  s.files        = Dir.glob("{bin,lib,examples}/**/*").reject{|x| x=~/tmp/} + %w(README.rdoc CHANGELOG CONTRIBUTORS Gemfile neo4j-spatial.gemspec)
+  s.files        = Dir.glob("{bin,lib,examples}/**/*").reject{|x| x=~/(tmp|target|croatia)/} + %w(README.rdoc CHANGELOG CONTRIBUTORS Gemfile neo4j-spatial.gemspec)
   s.has_rdoc = true
   s.extra_rdoc_files = %w( README.rdoc )
   s.rdoc_options = ["--quiet", "--title", "Neo4j-Spatial.rb", "--opname", "index.html", "--line-numbers", "--main", "README.rdoc", "--inline-source"]
