@@ -22,6 +22,7 @@ EOF
 
   s.require_path = 'lib'
   s.files        = Dir.glob("{bin,lib,examples}/**/*").reject{|x| x=~/(tmp|target|croatia|test-data)/} + %w(README.rdoc CHANGELOG CONTRIBUTORS Gemfile neo4j-spatial.gemspec)
+  s.executables  = ['osm_import', 'osm_layer', 'export_layer']
   s.has_rdoc = true
   s.extra_rdoc_files = %w( README.rdoc )
   s.rdoc_options = ["--quiet", "--title", "Neo4j-Spatial.rb", "--opname", "index.html", "--line-numbers", "--main", "README.rdoc", "--inline-source"]
