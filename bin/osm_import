@@ -10,11 +10,17 @@ require 'neo4j/spatial/cmd'
 require 'fileutils'
 
 $files = Neo4j::Spatial::Cmd.args
+$script = $0.split(/[\\\/]+/)[-1].gsub(/\.rb$/,'')
+$formats = [:shp, :osm]
+$formats.each do |f|
+  $format = f if($0 =~ /#{f}/)
+end
 
-if $help || $files.length < 1
-  puts "usage: osm_import.rb <-d> <-D storage_path> file.osm"
+if $help || $files.length < 1 || $format.nil?
+  puts "usage: #{$script} <-d> <-D storage_path> #{$format ? "file.#{$format}" : "<-F format> file"}"
   puts "\t-d\tDelete database first"
   puts "\t-D\tUse specified database location"
+  puts "\t-F\tImport specified format (#{$formats.join(', ')})" unless($format)
   exit
 end
 
@@ -23,7 +29,8 @@ if $delete
     FileUtils.rm_rf Neo4j::Config[:storage_path]
 end
 
+importer = eval "Neo4j::Spatial::#{$format.to_s.upcase}Importer.new"
+
 $files.each do |file|
-  osm_importer = Neo4j::Spatial::OSMImporter.new
-  osm_importer.import file
+  importer.import file
 end

@@ -51,6 +51,6 @@ require 'neo4j/spatial/jars/gt-shapefile/vecmath-1.3.2.jar'
 
 require 'neo4j/spatial/database.rb'
 require 'neo4j/spatial/layer.rb'
-require 'neo4j/spatial/shapefile.rb'
 require 'neo4j/spatial/osm.rb'
+require 'neo4j/spatial/shp.rb'
 require 'neo4j/spatial/image.rb'
