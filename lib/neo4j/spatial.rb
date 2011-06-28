@@ -12,7 +12,7 @@ begin
 rescue LoadError
 end
 
-require 'neo4j/spatial/jars/neo4j-spatial-0.5-SNAPSHOT.jar'
+require 'neo4j/spatial/jars/neo4j-spatial-0.6-SNAPSHOT.jar'
 require 'neo4j/spatial/jars/json-simple-1.1.jar'
 require 'neo4j/spatial/jars/log4j-1.2.14.jar'
 
