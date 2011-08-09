@@ -44,7 +44,7 @@ eos
 end
 
 if $format.to_s.downcase === 'shp'
-  $exporter = Neo4j::Spatial::ShapefileExporter.new :dir => $export
+  $exporter = Neo4j::Spatial::SHPExporter.new :dir => $export
 else
   $exporter = Neo4j::Spatial::ImageExporter.new :dir => $export, :zoom => $zoom, :width => $width, :height => $height
 end
